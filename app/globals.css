@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Syne:wght@400..800&display=swap');
+
+.border-gradient {
+  border-width: 2px;
+  border-style: solid;
+
+  border-image-source: linear-gradient(90deg, #6a5acd, #48d1cc);
+  border-image-slice: 1;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+}
+
+
+body {
+
+  font-family: "Syne", sans-serif;
+}
