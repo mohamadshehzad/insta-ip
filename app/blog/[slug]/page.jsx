@@ -5,6 +5,7 @@ import { marked } from 'marked';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Head from 'next/head';
+import Link from 'next/link';  // ✅ Added this
 
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'posts');
@@ -83,6 +84,7 @@ export default async function BlogPost({ params }) {
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/blog/${params.slug}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-600 hover:underline"
                 >
                   Facebook
@@ -90,6 +92,7 @@ export default async function BlogPost({ params }) {
                 <a
                   href={`https://twitter.com/intent/tweet?url=https://yourwebsite.com/blog/${params.slug}&text=${data.title}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-400 hover:underline"
                 >
                   Twitter
@@ -97,6 +100,7 @@ export default async function BlogPost({ params }) {
                 <a
                   href={`https://api.whatsapp.com/send?text=https://yourwebsite.com/blog/${params.slug}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-green-600 hover:underline"
                 >
                   WhatsApp
@@ -110,16 +114,32 @@ export default async function BlogPost({ params }) {
             <div>
               <h3 className="text-lg font-bold mb-3">Recent Posts</h3>
               <ul className="text-blue-600 text-sm space-y-2">
-                <li><a href="/blog/my-first-post" className="hover:underline">What is an IP Address?</a></li>
-                <li><a href="/blog/what-is-vpn" className="hover:underline">What is a VPN?</a></li>
+                <li>
+                  <Link href="/blog/my-first-post" className="hover:underline">
+                    What is an IP Address?
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog/what-is-vpn" className="hover:underline">
+                    What is a VPN?
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-bold mb-3">Related Topics</h3>
               <ul className="text-blue-600 text-sm space-y-2">
-                <li><a href="/blog/ip-tracking" className="hover:underline">Is IP Tracking Legal?</a></li>
-                <li><a href="/blog/ip-leaks" className="hover:underline">Prevent IP Leaks</a></li>
+                <li>
+                  <Link href="/blog/ip-tracking" className="hover:underline">
+                    Is IP Tracking Legal?
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog/ip-leaks" className="hover:underline">
+                    Prevent IP Leaks
+                  </Link>
+                </li>
               </ul>
             </div>
           </aside>
