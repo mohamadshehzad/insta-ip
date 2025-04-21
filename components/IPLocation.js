@@ -25,7 +25,7 @@ const IPLocation = () => {
                 No Data Storage
               </h3>
               <p className="text-gray-600 text-sm">
-                We don’t log your IP or location. Your privacy is our top
+                We don&apos;t log your IP or location. Your privacy is our top
                 priority.
               </p>
             </div>
@@ -73,8 +73,8 @@ const IPLocation = () => {
             </p>
             <p className="text-lg text-gray-700">
               Additionally, there are virtual IP addresses (VIP or VIPA) that
-              aren’t tied to a physical location. These are shared by multiple
-              devices and are commonly used in home or office networks.
+              aren&apos;t tied to a physical location. These are shared by
+              multiple devices and are commonly used in home or office networks.
             </p>
           </div>
 
@@ -139,7 +139,7 @@ const IPLocation = () => {
                   What Is an IP Address? Your Digital Fingerprint Explained
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  Every device connected to the internet — whether it's your
+                  Every device connected to the internet — whether it&apos;s your
                   smartphone, laptop, or smart fridge — has a unique identifier
                   called an IP...
                 </p>
@@ -160,7 +160,7 @@ const IPLocation = () => {
               </h3>
               <p className="text-gray-600 text-sm">
                 Explore modern privacy challenges and why IP-based tracking is a
-                growing concern in today's internet landscape.
+                growing concern in today&apos;s internet landscape.
               </p>
             </div>
           </div>
