@@ -32,10 +32,11 @@ export default function TermsPage() {
         Our blog or tools may include links to third-party websites. We are not responsible for their content, accuracy, or practices. Visiting external sites is at your own discretion.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">6. Limitation of Liability</h2>
-      <p className="mb-4">
-        insta-ip.com shall not be held liable for any direct or indirect damages resulting from your use of the site or tools. We provide everything "as is" without warranties of any kind.
-      </p>
+<h2 className="text-2xl font-semibold mt-8 mb-4">6. Limitation of Liability</h2>
+<p className="mb-4">
+  insta-ip.com shall not be held liable for any direct or indirect damages resulting from your use of the site or tools. We provide everything &quot;as is&quot; without warranties of any kind.
+</p>
+
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">7. Changes to Terms</h2>
       <p className="mb-4">

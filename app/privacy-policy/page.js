@@ -75,10 +75,11 @@ export default function PrivacyPolicy() {
         By using our website, you hereby consent to our Privacy Policy and agree to its terms.
       </p>
 
-      <h2 className="text-xl font-semibold mt-6 mb-2">9. Updates to This Policy</h2>
-      <p className="mb-4">
-        We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Effective Date" at the top.
-      </p>
+<h2 className="text-xl font-semibold mt-6 mb-2">9. Updates to This Policy</h2>
+<p className="mb-4">
+  We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated &quot;Effective Date&quot; at the top.
+</p>
+
 
       <h2 className="text-xl font-semibold mt-6 mb-2">10. Contact Us</h2>
       <p className="mb-4">
