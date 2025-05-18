@@ -147,22 +147,24 @@ const IPLocation = () => {
             </Link>
 
             {/* Blog Post 3 */}
-            <div className="bg-white shadow-sm rounded-xl p-6 hover:shadow-md transition cursor-pointer">
-              <Image
-                src="/blog3.jpg"
-                alt="Why IP Privacy is Critical in 2025"
-                width={400}
-                height={160}
-                className="w-full h-40 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Why IP Privacy is Critical in 2025
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Explore modern privacy challenges and why IP-based tracking is a
-                growing concern in today&apos;s internet landscape.
-              </p>
-            </div>
+              <Link href="/blog/vpn-security-guide">
+              <div className="bg-white shadow-sm rounded-xl p-6 hover:shadow-md transition cursor-pointer">
+                <Image
+                  src="/ip.avif"
+                  alt="What Is an IP Address?"
+                  width={400}
+                  height={160}
+                  className="w-full h-40 object-contain rounded-lg mb-4"
+                />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  What Is My IP Address? How to Check & Protect It (2024 Guide)
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Discover what your IP address reveals, risks of exposure, and 3 steps to protect your privacy. Check your IP securely now!
+                </p>
+              </div>
+            </Link>
+
           </div>
         </div>
       </section>
