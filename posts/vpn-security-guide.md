@@ -23,6 +23,8 @@ An IP (Internet Protocol) address is a numerical label assigned to every device 
 2. IPv6: The newer format (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Solves IPv4 shortages.
 
 ## What Can Your IP Address Reveal?
+<img src="/ss.png" alt="Insta-ip the best free ip checker tool" width="600" height="400" />
+
 - Geolocation: City/country (not exact street address).
 - ISP (Internet Service Provider): e.g., Comcast, Verizon.
 - Proxy/VPN Detection: Whether you’re using anonymity tools.
