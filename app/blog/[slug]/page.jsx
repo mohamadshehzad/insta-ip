@@ -5,7 +5,7 @@ import { marked } from 'marked';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Head from 'next/head';
-import Link from 'next/link';  // ✅ Added this
+import Link from 'next/link';
 
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'posts');
@@ -29,14 +29,73 @@ export default async function BlogPost({ params }) {
         <title>{data.meta_title || data.title}</title>
         <meta name="description" content={data.meta_description} />
         <meta name="keywords" content={data.keywords} />
+
+        {/* Schema.org: BlogPosting */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": data.title,
+              "description": data.meta_description,
+              "datePublished": data.date,
+              "author": {
+                "@type": "Person",
+                "name": data.author || "Admin"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Insta-IP",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://insta-ip.com/logo.png"
+                }
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://insta-ip.com/blog/${params.slug}`
+              }
+            })
+          }}
+        />
+
+        {/* Schema.org: BreadcrumbList */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://insta-ip.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://insta-ip.com/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": data.title,
+                  "item": `https://insta-ip.com/blog/${params.slug}`
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div className="bg-white text-gray-800 min-h-screen py-10">
         <div className="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-
           {/* Main Blog Content */}
           <article className="md:col-span-2">
-            {/* Hero Image */}
             {data.feature_image && (
               <Image
                 src={data.feature_image}
@@ -47,20 +106,16 @@ export default async function BlogPost({ params }) {
               />
             )}
 
-            {/* Blog Header */}
             <h1 className="text-4xl font-bold leading-snug mb-2">{data.title}</h1>
             <p className="text-sm text-gray-500 mb-6">
-              {data.author && `By ${data.author} • `}
-              {data.date}
+              {data.author && `By ${data.author} • `}{data.date}
             </p>
 
-            {/* Blog Body */}
             <div
               className="prose prose-lg prose-blue max-w-none"
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
 
-            {/* Tags */}
             {data.tags && (
               <div className="mt-8">
                 <h4 className="font-semibold text-gray-700 mb-2">Tags:</h4>
@@ -82,7 +137,7 @@ export default async function BlogPost({ params }) {
               <h3 className="text-xl font-semibold mb-4">Share this post:</h3>
               <div className="flex gap-4 text-sm">
                 <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/blog/${params.slug}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://insta-ip.com/blog/${params.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline"
@@ -90,7 +145,7 @@ export default async function BlogPost({ params }) {
                   Facebook
                 </a>
                 <a
-                  href={`https://twitter.com/intent/tweet?url=https://yourwebsite.com/blog/${params.slug}&text=${data.title}`}
+                  href={`https://twitter.com/intent/tweet?url=https://insta-ip.com/blog/${params.slug}&text=${data.title}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline"
@@ -98,7 +153,7 @@ export default async function BlogPost({ params }) {
                   Twitter
                 </a>
                 <a
-                  href={`https://api.whatsapp.com/send?text=https://yourwebsite.com/blog/${params.slug}`}
+                  href={`https://api.whatsapp.com/send?text=https://insta-ip.com/blog/${params.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-600 hover:underline"

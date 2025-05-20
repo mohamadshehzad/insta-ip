@@ -4,6 +4,7 @@ date: "2025-04-15"
 meta_title: "What Is an IP Address? | How It Works & Why It Matters"
 meta_description: "Learn what an IP address is, how it works like a digital fingerprint, and why it's crucial for online privacy and security. Includes free IP checking tools."
 keywords: "IP address, what is my IP, IP lookup, internet protocol, online privacy, VPN"
+Author: Salim Khudayfah,Expert, 10+ years of experience in network privacy
 ---
 
 ![IP Address Concept](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)  

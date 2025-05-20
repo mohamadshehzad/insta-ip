@@ -4,6 +4,7 @@ date: "2025-04-15"
 meta_title: "The Ultimate Guide to IP Addresses | What Your IP Reveals About You"
 meta_description: "Discover what your IP address reveals about your location, privacy risks, and online identity. Use our free IP checker tool to see your real-time data."
 keywords: "IP address, what is my IP, IP lookup, internet protocol, online privacy, VPN, What is my IP, IP location accuracy, How to hide IP"
+Author: Salim Khudayfah,Expert, 10+ years of experience in network privacy
 ---
 ## Introduction: 
 Every time you go online, your device broadcasts a digital identifier called an IP (Internet Protocol) address. This unique number exposes:
