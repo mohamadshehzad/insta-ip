@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://insta-ip.com
+
+# Sitemaps
+Sitemap: https://insta-ip.com/sitemap.xml
