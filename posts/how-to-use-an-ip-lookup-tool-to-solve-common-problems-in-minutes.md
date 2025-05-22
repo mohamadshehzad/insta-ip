@@ -21,6 +21,8 @@ You're working on a critical project and suddenly your website goes down. Your a
 
 ## 💡 What is an IP Lookup Tool?
 
+![what is ip lookup tool](/iplookup-tool.avif)
+
 An IP lookup tool helps identify key details about any IP address:
 
 - 🌍 **Geolocation** (country, city, time zone)  
@@ -32,6 +34,8 @@ Think of it as a digital background check for every IP visiting your site or cli
 
 
 ## ✅ 5 Quick Wins with Insta-IP (Real-World Examples)
+
+![5 quick wins with Insta IP](/5-quick-wins.avif)
 
 ### 1. ⚠️ Fix Website Errors in 2 Minutes  
 **Problem**: Some users see “404 Not Found.”  
@@ -80,10 +84,10 @@ Think of it as a digital background check for every IP visiting your site or cli
 
 **Result**: Page speed improved from 8s to 1.2s
 
-![Global Load Time Map](https://www.uptrends.com/media/1616/server-monitoring-map.png)
-
 
 ## 🔐 Why Insta-IP is a Game Changer
+
+![Insta IP is game changer](/game-changer.avif)
 
 - 🧠 **Easy to Use** — Paste IP → Get info  
 - 🆓 **100% Free** — No signup or hidden limits  
