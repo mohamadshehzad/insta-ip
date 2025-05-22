@@ -7,6 +7,7 @@ Keywords: "IP address, what is my IP, IP lookup, internet protocol, online priva
 Author: Salim Khudayfah,Expert, 10+ years of experience in network privacy
 ---
 <img src="/iplookup.avif" alt="ip and primary two functions" width="700" height="400" />
+
 We live in an age of rapid technological advancement, and with each passing day, we are becoming more dependent on the internet. While these advancements make our lives easier in many ways, they also come with certain drawbacks. One of the major concerns is that,  as internet and networking technologies evolve, our privacy is increasingly at risk.
 
 In today’s world, internet access is a basic necessity. We use internet-enabled devices throughout our workplaces and homes, but this convenience can also make our privacy vulnerable. Internet routers assign a unique set of numbers—known as an IP address—to each connected device.
