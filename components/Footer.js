@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/logo.2eb85d29b6c42e62c4ad.webp";
+import logo from "@/public/insta-ip-logo.avif";
 
 const Footer = () => {
     return (
@@ -29,10 +29,10 @@ const Footer = () => {
                         <Link href="/" className="text-2xl font-bold">
                             <Image
                                 src={logo}
-                                alt="Agency Logo"
+                                alt="Insta ip footer logo"
                                 className="h-12 w-auto cursor-pointer"
-                                width={100}
-                                height={100}
+                                width={250}
+                                height={250}
                                 loading="lazy"
                             />
                         </Link>
