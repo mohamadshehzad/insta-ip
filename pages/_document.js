@@ -6,8 +6,8 @@ export default function Document() {
     <Html>
       <Head>
         {/* Ezoic Privacy Scripts */}
-        <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
-        <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+        <script src="https://cmp.gatekeeperconsent.com/min.js " data-cfasync="false" async></script>
+        <script src="https://the.gatekeeperconsent.com/cmp.min.js " data-cfasync="false" async></script>
 
         {/* Ezoic Header Script */}
         <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
