@@ -65,6 +65,11 @@ const Header = () => {
                   Our Blogs
                 </Link>
               </li>
+                            <li>
+                <Link href="/tools/fdownload" className="hover:text-blue-500 ">
+                  Fdownloader
+                </Link>
+              </li>
               {/* <li>
                 <Link href="#services" className="hover:text-blue-500 ">
                   Services
