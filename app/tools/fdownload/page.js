@@ -8,9 +8,9 @@ import VideoForm from './components/VideoForm';         // default export
 import VideoDetails from './components/VideoDetails';  // default export
 
 // Global components
-import Concern from '@/components/Concern';
-import Content from '@/components/Content';
-import FAQ from '@/components/FAQ';
+import Concern from '@/components/concerns';
+import Content from '@/components/fdowncontent';
+import FAQ from '@/components/fdownfaqs';
 import Loader from '@/components/Loader';
 
 export default function FDownloadPage() {
@@ -31,6 +31,7 @@ export default function FDownloadPage() {
             <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z" />
           </svg>
         </div>
+        
 
         <div className="px-4 pb-16 pt-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-5">
           <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
