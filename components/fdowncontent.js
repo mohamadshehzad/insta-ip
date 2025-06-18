@@ -1,4 +1,4 @@
-import image from '@/public/freepik-export-20241204112209zdlN.jpeg'
+import image from '@/public/social.avif'
 import Image from 'next/image';
 
 export const Content = () => {
@@ -91,7 +91,6 @@ export const Content = () => {
                       height={1000} 
                       src={image} 
                       alt="Video download privacy protection illustration" 
-                      className="rounded-xl border-4 border-blue-100 shadow-lg"
                     />
 
                 </div>
