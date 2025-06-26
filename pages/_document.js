@@ -5,18 +5,8 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* Ezoic Privacy Scripts */}
-        <script src="https://cmp.gatekeeperconsent.com/min.js " data-cfasync="false" async></script>
-        <script src="https://the.gatekeeperconsent.com/cmp.min.js " data-cfasync="false" async></script>
-
-        {/* Ezoic Header Script */}
-        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            window.ezstandalone = window.ezstandalone || {};
-            ezstandalone.cmd = ezstandalone.cmd || [];
-          `
-        }} />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5128166135949798"
+      crossorigin="anonymous"></script>
       </Head>
       <body>
         <Main />
