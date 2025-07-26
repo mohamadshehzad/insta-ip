@@ -4,12 +4,16 @@ import Image from "next/image";
 import mapImage from "@/public/32540-4-technology-hd 1.png";
 import useIpDetails from "@/hooks/useIpDetails";
 import Link from "next/link";
+import BannerAd from "@/components/bannerad"; // ✅ Correct import
 
 const IPLocation = () => {
   const { data: ipData } = useIpDetails();
 
   return (
     <>
+    
+    <BannerAd /> {/* ✅ Use the component here to activate it */}
+
       {/* Trust Section */}
       <section className="bg-gray-50 py-14 px-4 md:px-12">
         <div className="max-w-7xl mx-auto">
