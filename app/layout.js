@@ -114,9 +114,8 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        {/* AdSense Script - Load once in the head */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5128166135949798"
-      crossorigin="anonymous"></script>
+        {/* Hilltopad Script - Load once in the head */}
+       <meta name="c06b233317b19649fa7a2b57ec60f772bdb2f88e" content="c06b233317b19649fa7a2b57ec60f772bdb2f88e" />
 
         {/* Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
