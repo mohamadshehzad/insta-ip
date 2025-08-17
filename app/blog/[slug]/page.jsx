@@ -1,235 +1,117 @@
+// app/blog/[slug]/page.jsx
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
-import { notFound } from "next/navigation";
+import Markdown from "markdown-to-jsx";
+import Link from "next/link";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), "posts");
   const filenames = fs.readdirSync(postsDirectory);
+
   return filenames.map((filename) => ({
     slug: filename.replace(/\.md$/, ""),
   }));
 }
 
-export async function generateMetadata({ params }) {
-  const postPath = path.join(process.cwd(), "posts", `${params.slug}.md`);
-  if (!fs.existsSync(postPath)) return {};
+export default function BlogPost({ params }) {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const filePath = path.join(postsDirectory, `${params.slug}.md`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
 
-  const fileContent = fs.readFileSync(postPath, "utf8");
-  const { data } = matter(fileContent);
-
-  return {
-    title: data.title || "Blog Post",
-    description: data.excerpt || "Read this in-depth blog post.",
-    keywords: data.keywords || "",
-    authors: [{ name: data.author || "Admin" }],
-    openGraph: {
-      title: data.title,
-      description: data.excerpt,
-      url: `https://yourdomain.com/blog/${params.slug}`,
-      siteName: "OctBloggers",
-      images: [
-        {
-          url: data.coverImage || "/default-cover.webp",
-          width: 1200,
-          height: 630,
-          alt: data.title,
-        },
-      ],
-      type: "article",
-      publishedTime: data.date,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: data.title,
-      description: data.excerpt,
-      images: [data.coverImage || "/default-cover.webp"],
-    },
-  };
-}
-
-export default async function BlogPost({ params }) {
-  const postPath = path.join(process.cwd(), "posts", `${params.slug}.md`);
-  if (!fs.existsSync(postPath)) return notFound();
-
-  const fileContent = fs.readFileSync(postPath, "utf8");
-  const { data, content } = matter(fileContent);
-
-  const headings = content
-    .split("\n")
-    .filter((line) => line.startsWith("#"))
-    .map((line) => {
-      const level = line.match(/^#+/)[0].length;
-      const text = line.replace(/^#+\s*/, "");
-      const id = text.toLowerCase().replace(/\s+/g, "-");
-      return { level, text, id };
-    });
-
-  // ✅ Article schema
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: data.title,
-    description: data.excerpt,
-    image: `https://yourdomain.com${data.coverImage || "/default-cover.webp"}`,
-    author: {
-      "@type": "Person",
-      name: data.author || "Admin",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "OctBloggers",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://yourdomain.com/logo.png",
-      },
-    },
-    datePublished: data.date,
-    dateModified: data.date,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://yourdomain.com/blog/${params.slug}`,
-    },
-  };
-
-  // ✅ Breadcrumb schema
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://yourdomain.com/",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
-        item: "https://yourdomain.com/blog",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: data.title,
-        item: `https://yourdomain.com/blog/${params.slug}`,
-      },
-    ],
-  };
-
-  // ✅ FAQ schema (if faqs exist in frontmatter)
-  const faqLd =
-    data.faqs && data.faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: data.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }
-      : null;
+  const { data: frontmatter, content } = matter(fileContents);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-4 gap-10">
-      {/* ✅ JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
-      {faqLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-        />
-      )}
-
-      {/* Blog Content */}
-      <article className="lg:col-span-3 bg-white shadow-md rounded-2xl p-8">
+    <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Main Blog Content */}
+      <article className="md:col-span-2 bg-white shadow-lg rounded-2xl p-6">
         {/* Breadcrumbs */}
-        <nav className="text-sm mb-6 text-gray-600">
-          <a href="/" className="hover:underline">
+        <nav className="text-sm mb-4 text-gray-500">
+          <Link href="/" className="hover:underline">
             Home
-          </a>{" "}
-          ›{" "}
-          <a href="/blog" className="hover:underline">
+          </Link>{" "}
+          /{" "}
+          <Link href="/blog" className="hover:underline">
             Blog
-          </a>{" "}
-          › <span className="font-medium">{data.title}</span>
+          </Link>{" "}
+          / <span className="text-gray-700">{frontmatter.title}</span>
         </nav>
 
-        {data.coverImage && (
-          <img
-            src={data.coverImage}
-            alt={data.title}
-            className="w-full h-72 object-cover rounded-xl mb-6"
-          />
+        {/* Cover Image */}
+        {frontmatter.coverImage && (
+          <div className="mb-6 relative w-full h-64 md:h-96">
+            <Image
+              src={frontmatter.coverImage}
+              alt={frontmatter.title}
+              fill
+              className="object-cover rounded-xl"
+              priority
+            />
+          </div>
         )}
 
-        <h1 className="text-4xl font-extrabold mb-3">{data.title}</h1>
-        <div className="flex items-center text-gray-500 text-sm mb-8 space-x-4">
-          <span>📅 {data.date}</span>
-          <span>✍️ {data.author || "Admin"}</span>
+        {/* Title */}
+        <h1 className="text-3xl font-bold mb-4">{frontmatter.title}</h1>
+
+        {/* Meta Info */}
+        <div className="text-gray-500 text-sm mb-6">
+          By {frontmatter.author || "Admin"} | {frontmatter.date}
         </div>
 
-        <div
-          className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: marked(content) }}
-        />
-
-        {/* ✅ FAQ Section visible on page (optional) */}
-        {data.faqs && data.faqs.length > 0 && (
-          <section className="mt-12">
-            <h2 className="text-2xl font-bold mb-6">❓ Frequently Asked Questions</h2>
-            <div className="space-y-6">
-              {data.faqs.map((faq, i) => (
-                <div key={i} className="border-b pb-4">
-                  <h3 className="text-lg font-semibold">{faq.question}</h3>
-                  <p className="text-gray-700 mt-2">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+        {/* Blog Content */}
+        <Markdown
+          options={{
+            overrides: {
+              img: {
+                component: Image,
+                props: {
+                  width: 800,
+                  height: 400,
+                  className: "rounded-xl mx-auto my-4",
+                },
+              },
+              a: {
+                component: ({ href, children }) => (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold hover:underline"
+                  >
+                    {children}
+                  </a>
+                ),
+              },
+            },
+          }}
+        >
+          {content}
+        </Markdown>
       </article>
 
       {/* Sidebar */}
-      <aside className="space-y-8">
-        <div className="bg-white shadow-md rounded-2xl p-6">
-          <h3 className="text-lg font-bold mb-4">📑 Table of Contents</h3>
-          <ul className="text-sm space-y-2">
-            {headings.map((h, i) => (
-              <li key={i} style={{ marginLeft: (h.level - 1) * 15 }}>
-                <a
-                  href={`#${h.text.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="text-blue-600 hover:underline"
-                >
-                  {h.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {data.sidebarBanner && (
-          <a href={data.sidebarLink} target="_blank" rel="noopener noreferrer">
-            <img
-              src={data.sidebarBanner}
-              alt="Affiliate Banner"
-              className="rounded-xl shadow-md hover:opacity-90 transition"
-            />
-          </a>
+      <aside className="bg-gray-50 p-4 shadow rounded-2xl">
+        <h3 className="text-lg font-semibold mb-4">Special Offer</h3>
+        {frontmatter.sidebarBanner && (
+          <div className="mb-4 relative w-full h-56">
+            <Link
+              href={frontmatter.sidebarLink || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={frontmatter.sidebarBanner}
+                alt="Affiliate Banner"
+                fill
+                className="object-contain rounded-lg"
+              />
+            </Link>
+          </div>
         )}
+        <p className="text-gray-600 text-sm">
+          Discover exclusive discounts on the best hosting providers of 2025.
+        </p>
       </aside>
     </div>
   );
