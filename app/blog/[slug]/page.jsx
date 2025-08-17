@@ -77,14 +77,15 @@ export default function BlogPost({ params }) {
               a: {
                 component: ({ href, children }) => {
                   if (href?.startsWith("/")) {
-                    // Internal links → use Next.js <Link>
                     return (
-                      <Link href={href} className="text-blue-600 font-semibold hover:underline">
+                      <Link
+                        href={href}
+                        className="text-blue-600 font-semibold hover:underline"
+                      >
                         {children}
                       </Link>
                     );
                   }
-                  // External links → normal <a>
                   return (
                     <a
                       href={href}
