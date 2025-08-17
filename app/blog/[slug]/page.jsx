@@ -64,24 +64,38 @@ export default function BlogPost({ params }) {
           options={{
             overrides: {
               img: {
-                component: Image,
-                props: {
-                  width: 800,
-                  height: 400,
-                  className: "rounded-xl mx-auto my-4",
-                },
+                component: (props) => (
+                  <Image
+                    src={props.src}
+                    alt={props.alt || ""}
+                    width={800}
+                    height={400}
+                    className="rounded-xl mx-auto my-4"
+                  />
+                ),
               },
               a: {
-                component: ({ href, children }) => (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 font-semibold hover:underline"
-                  >
-                    {children}
-                  </a>
-                ),
+                component: ({ href, children }) => {
+                  if (href?.startsWith("/")) {
+                    // Internal links → use Next.js <Link>
+                    return (
+                      <Link href={href} className="text-blue-600 font-semibold hover:underline">
+                        {children}
+                      </Link>
+                    );
+                  }
+                  // External links → normal <a>
+                  return (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 font-semibold hover:underline"
+                    >
+                      {children}
+                    </a>
+                  );
+                },
               },
             },
           }}
