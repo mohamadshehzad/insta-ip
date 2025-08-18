@@ -26,7 +26,7 @@ export default function BlogPost({ params }) {
     <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Main Blog Content */}
       <article className="md:col-span-2 bg-white shadow-lg rounded-2xl p-6">
-        {/* Breadcrumbs */}
+        {/* Breadcrumbs - Fixed Link usage */}
         <nav className="text-sm mb-4 text-gray-500">
           <Link href="/" className="hover:underline">
             Home
@@ -59,19 +59,20 @@ export default function BlogPost({ params }) {
           By {frontmatter.author || "Admin"} | {frontmatter.date}
         </div>
 
-        {/* Blog Content */}
+        {/* Blog Content - Fixed image handling */}
         <Markdown
           options={{
             overrides: {
               img: {
                 component: (props) => (
-                  <Image
-                    src={props.src}
-                    alt={props.alt || ""}
-                    width={800}
-                    height={400}
-                    className="rounded-xl mx-auto my-4"
-                  />
+                  <div className="relative w-full h-64 my-4"> {/* Added container */}
+                    <Image
+                      src={props.src}
+                      alt={props.alt || ""}
+                      fill
+                      className="object-contain rounded-xl mx-auto"
+                    />
+                  </div>
                 ),
               },
               a: {
@@ -115,12 +116,14 @@ export default function BlogPost({ params }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image
-                src={frontmatter.sidebarBanner}
-                alt="Affiliate Banner"
-                fill
-                className="object-contain rounded-lg"
-              />
+              <div className="relative w-full h-full"> {/* Added container */}
+                <Image
+                  src={frontmatter.sidebarBanner}
+                  alt="Affiliate Banner"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
             </Link>
           </div>
         )}
