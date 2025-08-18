@@ -24,7 +24,7 @@ After intense research, we have brought the **best affordable web hosting** for 
 
 ---
 
-## 1. StableHost
+## StableHost
 
 ![StableHost Banner](/stablehost.webp)
 
